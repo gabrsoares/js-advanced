@@ -1,33 +1,50 @@
+/* Nas funções abaixo resolvi aplicar classe e arrow functions, agilizando o processo de executar a função e passar as variáveis necessárias para realizar o cálculo.
+* Para inserir os valores, pode seguir o exemplo: 
+    const pv01 = new Prova('primeira unidade', 10)
+    const pv02 = new Prova('segunda unidade', 8)
+    const pv03 = new Prova('terceira unidade', 9.5)
 
-function calcularMedia( notas ) {
+    bol01.novaNota(pv01, pv02, pv03)
 
-    let soma = 0;
-    for( c = 0; c < notas.length; c++) {
-        soma += notas[c];
+    const bol01 = new Boletim('aluno', 2022)
+    console.log(bol01.registroBoletim())
+*/
+class Prova {
+    constructor (unidade = '', nota = 0){
+        this.unidade = unidade,
+        this.nota = nota
     }
-
-    media = soma / notas.length;
-
-    return media;
-
 }
 
-let media; // escopo global
+class Boletim {
+    constructor(aluno = '',ano = 0){
+        this.aluno = aluno,
+        this.ano = ano,
+        this.notas = []
+    }
 
-function aprovacao( notas ) {
+    novaNota(... prova){
+        prova.forEach(
+            nota => this.notas.push(nota)
+        )
+    }
 
-    let media = calcularMedia( notas ); // escopo da função
-
-    let condicao = media >= 8 ? "aprovado" : "reprovado";
-
-    return 'Média: ' + media + ' - Resultado: ' + condicao;
-
+    registroBoletim(){
+        let totalNotas = 0;
+        let media = 0
+        this.notas.forEach( prova => {
+            totalNotas += prova.nota
+            media = (totalNotas/this.notas.length).toFixed(2)
+        })
+        const condicao = media >=8 ? "aprovado" : "reprovado"
+        return `${this.aluno} no ano de ${this.ano} obteve a média de ${media} e foi ${condicao}`
+    }
 }
 
 
 // Função Recursivas
-
-function contagemRegressiva(numero){
+// Só transformei a função em arrow function, não tinha muito o que fazer aqui
+const contagemRegressiva = numero => {
 
     console.log(numero);  
     
@@ -43,10 +60,14 @@ function contagemRegressiva(numero){
 /* 
  * Formulário envio de dados para cálculo da média 
  */
+
+
+// Transformei as funções em arrow function
+
 const formulario1 = document.getElementById('formulario-01');
 
 if(formulario1)
-    formulario1.addEventListener('submit', function( evento ){
+    formulario1.addEventListener('submit',  evento => {
 
         evento.preventDefault();
         evento.stopPropagation();
@@ -78,7 +99,7 @@ if(formulario1)
     });
 
 
-function validaCampo(elemento){
+const validaCampo = elemento => {
 
     elemento.addEventListener('focusout', function(event) {
 
@@ -99,7 +120,7 @@ function validaCampo(elemento){
 
 }
 
-function validaCampoNumerico(elemento){
+const validaCampoNumerico = elemento =>{
 
     elemento.addEventListener('focusout', function(event) {
 
@@ -123,7 +144,7 @@ function validaCampoNumerico(elemento){
 }
 
 
-function validaEmail(elemento){
+const validaEmail = elemento =>{
 
     elemento.addEventListener('focusout', function(event) {
 
