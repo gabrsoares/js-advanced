@@ -166,20 +166,22 @@ const validaEmail = elemento =>{
 
 }
 
+// Apliquei o conceito de objeto nas variáveis abaixo para facilitar o entendimento
 
-let camposObrigatorios = document.querySelectorAll('input.obrigatorio');
-let camposNumericos = document.querySelectorAll('input.numero');
-let camposEmail = document.querySelectorAll('input.email');
+const campos = new Object() 
+campos.obrigatorios = document.querySelectorAll('input.obrigatorio');
+campos.numericos = document.querySelectorAll('input.numero');
+campos.email = document.querySelectorAll('input.email');
 
-for( let emFoco of camposObrigatorios) {
+for( let emFoco of campos.obrigatorios) {
     validaCampo(emFoco);
 }
 
-for( let emFoco of camposNumericos) {
+for( let emFoco of campos.numericos) {
     validaCampoNumerico(emFoco);
 }
 
-for( let emFoco of camposEmail) {
+for( let emFoco of campos.email) {
     validaEmail(emFoco);
 }
 
