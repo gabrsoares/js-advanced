@@ -2,8 +2,8 @@
 // string 
 // tuple
 var title;
-title: ["1", "Título"];
-// enum  { chave: valor}
+title: [1, 'titulo'];
+//enum {chave: valor}
 var Color;
 (function (Color) {
     Color["white"] = "#fff";

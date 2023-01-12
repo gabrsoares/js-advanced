@@ -3,9 +3,10 @@
 
 // tuple
 let title: [number, string]
-title: ["1", "Título"]
+title: [1, 'titulo']
 
-// enum  { chave: valor}
+//enum {chave: valor}
+
 enum Color {
     white = '#fff',
     red = '#f00',
